@@ -87,7 +87,6 @@ export default {
             this.showSnackBar = true
             this.errors.push('Username ili password su netacni')
           }
-          // console.log('The username and / or password is incorrect')
         }
       } else {
         this.errors = []
@@ -99,13 +98,6 @@ export default {
             this.showSnackBar = true
             this.errors.push('Password required.')
           }
-      }
-    }
-  },
-  watch: {
-    amount: function(value) {
-      if(value) {
-        this.amount = 50
       }
     }
   }
