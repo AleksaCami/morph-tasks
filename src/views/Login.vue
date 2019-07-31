@@ -1,13 +1,27 @@
 <template>
   <div>
     <div class="centered-container">
+      <div v-if='errors.length'>
+        <p v-for="error in errors" :key="error"> {{ error }}</p>
+      </div>
       <md-card>
         <md-card-header class="content">
           <md-card-header-text>
-            <div class='heading-wrapper'>
-              <div class="md-subhead heading">Welcome!</div>
-              <div class="md-title heading">
-                <font-awesome-icon :icon="['fab', 'youtube']" />YouTube videos platform
+            <div class="heading-wrapper">
+              <div v-if="isLoggingIn" class="spinner-wrapper mt-2">
+                <div style="text-align: center">
+                  <md-progress-spinner style="width: 3rem; height: 0.5rem;" :md-diameter="30" :md-stroke="3" class='md-accent' md-mode="determinate" :md-value="amount">
+                  </md-progress-spinner>
+                </div>
+                 <div>
+                  {{ amount }}%
+                </div>
+              </div>
+              <div class='heading-text-wrapper'>
+                <div class="md-subhead heading">Welcome!</div>
+                <div class="md-title heading">
+                  <font-awesome-icon class="mr-1" :icon="['fab', 'youtube']" />YouTube videos
+                </div>
               </div>
             </div>
           </md-card-header-text>
@@ -26,7 +40,7 @@
           </div>
 
           <div class="actions md-layout md-alignment-center">
-            <md-button type="submit" class="md-raised md-primary" @click.prevent="login">Log in</md-button>
+            <md-button v-on:keyup.enter="login" type="submit" class="md-raised md-primary" @click.prevent="login">Log in</md-button>
           </div>
 
         </md-content>
@@ -41,20 +55,20 @@ export default {
   data () {
     return {
       loggedIn: false,
+      errors: [],
       input: {
         username: '',
         password: ''
       },
-      amount: 50
+      isLoggingIn: false,
+      amount: 0
     }
   },
   methods: {
     login () {
       if (this.input.username !== '' && this.input.password !== '') {
-        if (
-          this.input.username === this.$parent.mockAccount.username &&
-          this.input.password === this.$parent.mockAccount.password
-        ) {
+        if (this.input.username === this.$parent.mockAccount.username && this.input.password === this.$parent.mockAccount.password) {
+          this.isLoggingIn = true
           this.$emit('authenticated', true)
           this.loggedIn = this.input.username
           localStorage.setItem('loggedIn', this.loggedIn)
@@ -63,7 +77,20 @@ export default {
           console.log('The username and / or password is incorrect')
         }
       } else {
-        console.log('A username and password must be present')
+        this.errors = [];
+          if (!this.username) {
+            this.errors.push('Username required.');
+          }
+          if (!this.password) {
+            this.errors.push('Password required.');
+          }
+      }
+    }
+  },
+  watch: {
+    amount: function(value) {
+      if(value) {
+        this.amount = 50
       }
     }
   }
@@ -81,9 +108,24 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  .heading-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  .heading-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+  }
   .heading {
     float: left;
     margin: 5px;
+  }
+  .spinner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center
   }
   .md-card {
     width: 360px;

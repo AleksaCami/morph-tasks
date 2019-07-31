@@ -14,6 +14,11 @@ import { MdButton, MdContent, MdCard, MdField, MdProgress } from 'vue-material/d
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
+// VUE BOOTSTRAP
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 library.add(faUserSecret)
 library.add(faYoutube)
 
@@ -26,6 +31,7 @@ Vue.use(MdContent)
 Vue.use(MdCard)
 Vue.use(MdField)
 Vue.use(MdProgress)
+Vue.use(BootstrapVue)
 
 new Vue({
   router,
