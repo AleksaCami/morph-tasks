@@ -4,9 +4,11 @@
       <md-card>
         <md-card-header class="content">
           <md-card-header-text>
-            <div class="md-subhead">Welcome!</div>
-            <div class="md-title">
-              <font-awesome-icon :icon="['fab', 'youtube']" />YouTube videos platform
+            <div class='heading-wrapper'>
+              <div class="md-subhead heading">Welcome!</div>
+              <div class="md-title heading">
+                <font-awesome-icon :icon="['fab', 'youtube']" />YouTube videos platform
+              </div>
             </div>
           </md-card-header-text>
         </md-card-header>
@@ -27,9 +29,6 @@
             <md-button type="submit" class="md-raised md-primary" @click.prevent="login">Log in</md-button>
           </div>
 
-          <div class="loading-overlay" v-if="loading">
-            <md-progress-spinner md-mode="indeterminate" :md-stroke="2"></md-progress-spinner>
-          </div>
         </md-content>
       </md-card>
     </div>
@@ -41,12 +40,12 @@
 export default {
   data () {
     return {
-      loading: false,
       loggedIn: false,
       input: {
         username: '',
         password: ''
-      }
+      },
+      amount: 50
     }
   },
   methods: {
@@ -82,6 +81,10 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  .heading {
+    float: left;
+    margin: 5px;
+  }
   .md-card {
     width: 360px;
   }

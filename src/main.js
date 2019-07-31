@@ -10,7 +10,7 @@ import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // MATERIAL DESIGN KOMPONENTE I STILOVI
-import { MdButton, MdContent, MdCard, MdField } from 'vue-material/dist/components'
+import { MdButton, MdContent, MdCard, MdField, MdProgress } from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
@@ -25,6 +25,7 @@ Vue.use(MdButton)
 Vue.use(MdContent)
 Vue.use(MdCard)
 Vue.use(MdField)
+Vue.use(MdProgress)
 
 new Vue({
   router,
