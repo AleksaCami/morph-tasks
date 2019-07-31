@@ -42,6 +42,7 @@ export default {
   data () {
     return {
       loading: false,
+      loggedIn: false,
       input: {
         username: '',
         password: ''
@@ -56,6 +57,8 @@ export default {
           this.input.password === this.$parent.mockAccount.password
         ) {
           this.$emit('authenticated', true)
+          this.loggedIn = this.input.username
+          localStorage.setItem('loggedIn', this.loggedIn)
           this.$router.replace({ name: 'home' })
         } else {
           console.log('The username and / or password is incorrect')
