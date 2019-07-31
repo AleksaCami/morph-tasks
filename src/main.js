@@ -5,7 +5,8 @@ import store from './store'
 
 // FONT AWESOME STILOVI I IKONICE
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret, faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // MATERIAL DESIGN KOMPONENTE I STILOVI
@@ -14,7 +15,7 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
 library.add(faUserSecret)
-library.add(faPlay)
+library.add(faYoutube)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

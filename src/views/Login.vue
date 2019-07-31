@@ -6,7 +6,7 @@
           <md-card-header-text>
             <div class="md-subhead">Welcome!</div>
             <div class="md-title">
-                <font-awesome-icon icon="play" />
+                <font-awesome-icon :icon="['fab', 'youtube']" />
                 YouTube videos platform
             </div>
           </md-card-header-text>
