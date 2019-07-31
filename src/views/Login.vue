@@ -1,9 +1,6 @@
 <template>
   <div>
     <div class="centered-container">
-      <div v-if='errors.length'>
-        <p v-for="error in errors" :key="error"> {{ error }}</p>
-      </div>
       <md-card>
         <md-card-header class="content">
           <md-card-header-text>
@@ -45,6 +42,13 @@
 
         </md-content>
       </md-card>
+
+      <md-snackbar :md-position="position" :md-duration="isInfinity ? Infinity : duration" :md-active.sync="showSnackBar" md-persistent>
+        <div v-if='errors.length'>
+          <p v-for="error in errors" :key="error"> {{ error }}</p>
+        </div>
+        <md-button class="md-primary" @click="showSnackbar = false">Retry</md-button>
+      </md-snackbar>
     </div>
   </div>
 </template>
@@ -61,7 +65,11 @@ export default {
         password: ''
       },
       isLoggingIn: false,
-      amount: 0
+      amount: 0,
+      showSnackBar: false,
+      position: 'center',
+      duration: 4000,
+      isInfinity: false
     }
   },
   methods: {
@@ -74,15 +82,22 @@ export default {
           localStorage.setItem('loggedIn', this.loggedIn)
           this.$router.replace({ name: 'home' })
         } else {
-          console.log('The username and / or password is incorrect')
+          this.errors = []
+          if(this.input.username !== this.$parent.mockAccount.username || this.input.password !== this.$parent.mockAccount.password) {
+            this.showSnackBar = true
+            this.errors.push('Username ili password su netacni')
+          }
+          // console.log('The username and / or password is incorrect')
         }
       } else {
-        this.errors = [];
+        this.errors = []
           if (!this.username) {
-            this.errors.push('Username required.');
+            this.showSnackBar = true
+            this.errors.push('Username required.')
           }
           if (!this.password) {
-            this.errors.push('Password required.');
+            this.showSnackBar = true
+            this.errors.push('Password required.')
           }
       }
     }
