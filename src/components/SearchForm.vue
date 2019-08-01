@@ -10,7 +10,7 @@
           placeholder="Search..."
         >
         <div class="input-group-append">
-          <button @click="parseSearchString" class="btn btn-outline-secondary" type="button">
+          <button @click="parseSearchString" class="btn btn-outline-primary" type="button">
             <font-awesome-icon class="mr-1" :icon="['fas', 'search']" />
           </button>
         </div>

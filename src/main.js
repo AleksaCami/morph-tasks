@@ -5,8 +5,12 @@ import store from './store'
 
 // FONT AWESOME STILOVI I IKONICE
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret, faSearch, faCheckCircle, faTable } from '@fortawesome/free-solid-svg-icons'
-import { faListAlt } from '@fortawesome/free-regular-svg-icons'
+import { faUserSecret, faSearch, faCheckCircle, faTable, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import {
+  faListAlt,
+  faBookmark,
+  faStar
+} from '@fortawesome/free-regular-svg-icons'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -14,7 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import moment from 'moment'
 
 // MATERIAL DESIGN KOMPONENTE I STILOVI
-import { MdButton, MdContent, MdCard, MdField, MdProgress, MdSnackbar, MdIcon, MdDivider } from 'vue-material/dist/components'
+import { MdButton, MdContent, MdCard, MdField, MdProgress, MdSnackbar, MdIcon, MdDivider, MdDrawer, MdToolbar, MdList, MdTooltip } from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
@@ -26,7 +30,18 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 // BIBLIOTEKA ZA EMBEDOVANJE YT VIDEA
 import VueYouTubeEmbed from 'vue-youtube-embed'
 
-library.add(faUserSecret, faYoutube, faSearch, faCheckCircle, faListAlt, faTable)
+library.add(
+  faUserSecret,
+  faYoutube,
+  faSearch,
+  faCheckCircle,
+  faListAlt,
+  faTable,
+  faBookmark,
+  faArrowLeft,
+  faArrowRight,
+  faStar
+)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -40,6 +55,10 @@ Vue.use(MdProgress)
 Vue.use(MdSnackbar)
 Vue.use(MdIcon)
 Vue.use(MdDivider)
+Vue.use(MdDrawer)
+Vue.use(MdToolbar)
+Vue.use(MdTooltip)
+Vue.use(MdList)
 Vue.use(BootstrapVue)
 Vue.use(VueYouTubeEmbed)
 

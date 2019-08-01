@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class='wrapper video' @click.prevent="openVideo(video)">
+    <div class='wrapper video'>
       <!-- <youtube :video-id="video.id.videoId" @ready="ready"></youtube> -->
       <md-card>
         <md-card-header>
 
-          <div class="md-title">{{ video.snippet.title }}</div>
+          <div v-html='video.snippet.title' class="md-title">{{ video.snippet.title }}</div>
           <div class="md-subhead">{{ video.snippet.channelTitle }} | {{ video.snippet.publishedAt | formatDate }}</div>
         </md-card-header>
 
@@ -16,13 +16,16 @@
         <md-card-content>
           {{ video.snippet.description }}
         </md-card-content>
+
+        <md-card-actions>
+          <md-button @click.prevent="openVideo(video)" class="md-raised md-primary">
+            Open
+          </md-button>
+          <md-button @click.prevent="addToFavorites(video)" class="md-raised md-primary">
+            Add to favorites
+          </md-button>
+        </md-card-actions>
       </md-card>
-      <!-- <div class="card-body video">
-        <h5 class="card-title">{{ video.snippet.title }}</h5>
-        <h6
-          class="card-subtitle mb-2 text-muted"
-        >{{ video.snippet.channelTitle }} | {{ video.snippet.publishedAt | formatDate }}</h6>
-      </div> -->
     </div>
   </div>
 </template>
@@ -36,6 +39,10 @@ export default {
     },
     ready (event) {
       this.player = event.target
+    },
+    addToFavorites (video) {
+      const favVideo = video
+      localStorage.setItem(`${video.id.videoId}`, JSON.stringify(favVideo))
     }
   },
   props: ['video']

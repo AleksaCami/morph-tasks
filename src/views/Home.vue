@@ -16,36 +16,9 @@
     <!-- DEFAULTNI HOME KOD KOJI SE RENDERUJE
     SVE DOK KORISNIK NE IZVRSI PRETRAGU -->
     <div class='container'>
-      <div class="d-flex mb-3">
-        <div class="btn-group ml-auto" role="group">
-          <md-button @click="changeDisplayMode('grid')"
-            type="button"
-            :class="{ active: displayMode === 'grid' }"
-            class="md-raised list-button"
-            style='background-color: #46d6b5; color: white'
-            >
-            <font-awesome-icon class="mr-1" :icon="['fas', 'table']" />
-          </md-button>
-          <md-button
-            @click="changeDisplayMode('list')"
-            type="button"
-            class="md-raised"
-            :class="{ active: displayMode === 'list' }"
-            style='background-color: #46d6b5; color: white'
-            >
-            <font-awesome-icon class="mr-1" :icon="['far', 'list-alt']" />
-          </md-button>
-        </div>
-      </div>
-
-      <div class="card-columns" v-if="displayMode === 'grid'">
+      <div class="card-columns">
         <div class="card" :key="video.id.videoId" v-for="video in homeVideos">
           <VideoGridItem :video="video"/>
-        </div>
-      </div>
-      <div v-else>
-        <div class="card mb-2" :key="video.id.videoId" v-for="video in homeVideos">
-          <VideoListItem :video="video"/>
         </div>
       </div>
     </div>
@@ -69,7 +42,6 @@ import SearchForm from '@/components/SearchForm.vue'
 import SearchResults from '@/components/SearchResults.vue'
 import Pagination from '@/components/Pagination.vue'
 import VideoGridItem from '@/components/VideoGridItem.vue'
-import VideoListItem from '@/components/VideoListItem.vue'
 
 export default {
   name: 'home',
@@ -78,8 +50,7 @@ export default {
     SearchForm,
     SearchResults,
     Pagination,
-    VideoGridItem,
-    VideoListItem
+    VideoGridItem
   },
   data () {
     return {
@@ -90,7 +61,7 @@ export default {
         order: 'viewCount',
         maxResults: 12,
         q: '',
-        key: 'AIzaSyCzutc_C0va6pJHfFuX_kg4Sxi6oj5stN0',
+        key: 'AIzaSyCmQ_WQF5NGW4vK-pfm9UZVe1sXxP0rRZQ',
         prevPageToken: '',
         nextPageToken: ''
       },
@@ -145,10 +116,6 @@ export default {
           this.api.nextPageToken = res.data.nextPageToken
         })
         .catch(error => console.error(error))
-    },
-
-    changeDisplayMode (displayMode) {
-      this.displayMode = displayMode
     }
   },
   mounted: function () {

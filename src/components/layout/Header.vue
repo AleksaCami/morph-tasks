@@ -6,23 +6,50 @@
           <font-awesome-icon :icon="['fab', 'youtube']" />
           <span class="ml-2">YouTube videos</span>
         </a>
-        <md-button @click.native="logout()"
-          type="button"
-          class="md-raised md-accent"
-          >
-          Logout
-        </md-button>
+        <md-button class="md-dense md-primary" style='color: white; border: 1px solid white' @click="showSidepanel = true">Menu</md-button>
       </div>
     </nav>
+    <md-drawer class="md-right" :md-active.sync="showSidepanel">
+      <md-toolbar class="md-transparent" md-elevation="0">
+        <span class="md-title">Menu</span>
+      </md-toolbar>
+
+      <md-list>
+        <md-list-item>
+          <a href="/home">
+            <md-button to="/home" class="md-primary">Home</md-button>
+          </a>
+        </md-list-item>
+        <md-list-item>
+          <md-button class="md-primary">Favorites</md-button>
+        </md-list-item>
+
+        <hr>
+
+        <md-list-item>
+          <md-button @click.native="logout()"
+            type="button"
+            class="md-raised md-accent"
+            >
+            Logout
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </md-drawer>
   </header>
 </template>
 
 <script>
 export default {
   name: 'Header',
+  data () {
+    return {
+      showSidepanel: false
+    }
+  },
   methods: {
     logout () {
-      localStorage.clear()
+      localStorage.removeItem('loggedIn')
       this.$router.push('/login')
     }
   }
@@ -32,6 +59,11 @@ export default {
 <style lang="scss" scoped>
 $white: #fff;
 $accent: #2196f3;
+
+.md-drawer {
+  width: 230px;
+  max-width: calc(100vw - 125px);
+}
 
 .nav-text {
     color: $white

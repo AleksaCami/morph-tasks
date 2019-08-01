@@ -1,7 +1,7 @@
 <template>
   <div class="container mb-3">
     <div class="d-flex mb-3">
-      <div class="mr-auto">
+      <div class="mr-auto" v-if="reformattedSearchString">
         <h3>Search Results for "{{ reformattedSearchString }}"</h3>
       </div>
       <div class="btn-group ml-auto" role="group">
