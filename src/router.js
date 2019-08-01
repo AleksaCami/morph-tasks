@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Video from './views/Video.vue'
+import Favorites from './views/Favorites.vue'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/video/:id/:title/:channel/:publishedAt',
       name: 'video',
       component: Video
+    },
+    {
+      path: '/favorites',
+      name: 'favorites',
+      component: Favorites
     }
   ]
 })

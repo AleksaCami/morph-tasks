@@ -111,7 +111,6 @@ export default {
         .get(apiUrl)
         .then(res => {
           this.homeVideos = res.data.items
-          console.log(this.homeVideos)
           this.api.prevPageToken = res.data.prevPageToken
           this.api.nextPageToken = res.data.nextPageToken
         })

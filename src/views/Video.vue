@@ -5,7 +5,7 @@
         <div class='video-wrapper py-5'>
           <div class='video'>
             <youtube :video-id="id" player-width="1280" player-height="750" :player-vars="{ autoplay: 1 }" ></youtube>
-            <h2>{{ title }}</h2>
+            <h2 v-html="title">{{ title }}</h2>
 
             <h4>{{ channel }}</h4>
             <small>Published on {{ publishedAt | formatDate }}</small>

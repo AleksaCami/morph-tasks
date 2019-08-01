@@ -1,13 +1,18 @@
 <template>
   <div id="app">
+    <!-- <Header v-if='nav' /> -->
     <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
 
 <script>
+// import Header from '@/components/layout/Header.vue'
 
 export default {
   name: 'app',
+  components: {
+    // Header
+  },
   data () {
     return {
       authenticated: false,

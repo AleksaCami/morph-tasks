@@ -21,7 +21,9 @@
           </a>
         </md-list-item>
         <md-list-item>
-          <md-button class="md-primary">Favorites</md-button>
+          <a href="/favorites">
+            <md-button class="md-primary">Favorites</md-button>
+          </a>
         </md-list-item>
 
         <hr>
