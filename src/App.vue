@@ -42,7 +42,7 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 
 html {
-  height: 100vh
+  height: 100vh;
 }
 
 #app {
