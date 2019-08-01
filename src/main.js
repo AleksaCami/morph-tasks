@@ -9,6 +9,8 @@ import { faUserSecret, faSearch, faCheckCircle, faTable } from '@fortawesome/fre
 import { faListAlt } from '@fortawesome/free-regular-svg-icons'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+// FORMATIRANJE DATUMA I VREMENA
 import moment from 'moment'
 
 // MATERIAL DESIGN KOMPONENTE I STILOVI
@@ -20,6 +22,9 @@ import 'vue-material/dist/theme/default.css'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+// BIBLIOTEKA ZA EMBEDOVANJE YT VIDEA
+import VueYouTubeEmbed from 'vue-youtube-embed'
 
 library.add(faUserSecret, faYoutube, faSearch, faCheckCircle, faListAlt, faTable)
 
@@ -35,6 +40,7 @@ Vue.use(MdProgress)
 Vue.use(MdSnackbar)
 Vue.use(MdIcon)
 Vue.use(BootstrapVue)
+Vue.use(VueYouTubeEmbed)
 
 Vue.filter('formatDate', function (value) {
   if (!value) return ''

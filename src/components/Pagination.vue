@@ -18,19 +18,18 @@ export default {
   name: 'Pagination',
   props: ['prevPageToken', 'nextPageToken'],
   methods: {
-    prevPage() {
+    prevPage () {
       this.$emit('prev-page')
     },
-    nextPage() {
+    nextPage () {
       this.$emit('next-page')
     }
   }
-};
+}
 </script>
 
 <style scoped>
 .page-link {
   box-shadow: none !important;
 }
-
 </style>
