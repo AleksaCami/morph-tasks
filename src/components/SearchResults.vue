@@ -2,7 +2,7 @@
   <div class="container mb-3">
     <div class="d-flex mb-3">
       <div class="mr-auto">
-        <h3>Search Results for "{{ formattedSearchString }}"</h3>
+        <h3>Search Results for "{{ reformattedSearchString }}"</h3>
       </div>
       <div class="btn-group ml-auto" role="group">
         <button
@@ -11,7 +11,7 @@
           class="btn btn-outline-secondary"
           :class="{ active: displayMode === 'grid' }"
         >
-          <font-awesome-icon :icon="['fas', 'table']" />
+          <font-awesome-icon class="mr-1" :icon="['fas', 'table']" />
         </button>
         <button
           @click="changeDisplayMode('list')"
@@ -19,14 +19,14 @@
           class="btn btn-outline-secondary"
           :class="{ active: displayMode === 'list' }"
         >
-          <font-awesome-icon :icon="['far', 'list-alt']" />
+          <font-awesome-icon class="mr-1" :icon="['far', 'list-alt']" />
         </button>
       </div>
     </div>
 
     <div class="card-columns" v-if="displayMode === 'grid'">
       <div class="card" :key="video.id.videoId" v-for="video in videos">
-        <VideoGridItem v-bind:video="video"/>
+        <VideoGridItem :video="video"/>
       </div>
     </div>
     <div v-else>
@@ -58,14 +58,7 @@ export default {
       this.displayMode = displayMode
     }
   },
-  mounted () {
-      return {
-         searchString() {
-            console.log(this.formattedSearchString)
-        }
-      }
-  },
-  props: ['videos', 'formattedSearchString']
+  props: ['videos', 'reformattedSearchString']
 }
 </script>
 

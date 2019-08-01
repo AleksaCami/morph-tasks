@@ -11,7 +11,7 @@
         >
         <div class="input-group-append">
           <button @click="parseSearchString" class="btn btn-outline-secondary" type="button">
-            <font-awesome-icon icon="search" />
+            <font-awesome-icon class="mr-1" :icon="['fas', 'search']" />
           </button>
         </div>
       </div>
@@ -30,11 +30,8 @@ export default {
   methods: {
     parseSearchString () {
       const trimmedSearchString = this.searchString.trim()
-      console.log(trimmedSearchString)
-
       if (trimmedSearchString !== '') {
         const searchParams = trimmedSearchString.split(/\s+/)
-        console.log(searchParams)
         this.$emit('search', searchParams)
         this.searchString = ''
       }

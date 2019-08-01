@@ -1,16 +1,12 @@
 <template>
   <div class="home">
     <Header/>
-    <SearchForm
-      :search="search"
-    />
+    <SearchForm v-on:search="search"/>
     <SearchResults
-      :videos="videos"
-      :formattedSearchString="formattedSearchString"
+      v-if="videos.length > 0"
+      v-bind:videos="videos"
+      v-bind:reformattedSearchString="reformattedSearchString"
     />
-    <div v-for="video in videos" :key="video">
-      {{ video.snippet.title }}
-    </div>
   </div>
 </template>
 
@@ -40,24 +36,24 @@ export default {
         prevPageToken: '',
         nextPageToken: ''
       },
-      formattedSearchString: '',
+      reformattedSearchString: '',
       videos: []
     }
   },
   methods: {
     search (searchParams) {
-      this.formattedSearchString = searchParams.join(' ')
+      this.reformattedSearchString = searchParams.join(' ')
       this.api.q = searchParams.join('+')
       const { baseUrl, part, type, order, maxResults, q, key } = this.api
       const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=${maxResults}&key=${key}`
       this.getData(apiUrl)
     },
     getData (apiUrl) {
-      console.log('asdasd')
       axios
         .get(apiUrl)
         .then(res => {
           this.videos = res.data.items
+          console.log(this.videos)
           this.api.prevPageToken = res.data.prevPageToken
           this.api.nextPageToken = res.data.nextPageToken
         })
