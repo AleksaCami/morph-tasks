@@ -7,21 +7,30 @@
       v-bind:videos="videos"
       v-bind:reformattedSearchString="reformattedSearchString"
     />
+    <Pagination
+      v-if="videos.length > 0"
+      :prevPageToken="api.prevPageToken"
+      :nextPageToken="api.nextPageToken"
+      v-on:prev-page="prevPage"
+      v-on:next-page="nextPage"
+    />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Header from '@/components/Header.vue'
+import Header from '@/components/layout/Header.vue'
 import SearchForm from '@/components/SearchForm.vue'
 import SearchResults from '@/components/SearchResults.vue'
+import Pagination from '@/components/Pagination.vue'
 
 export default {
   name: 'home',
   components: {
     Header,
     SearchForm,
-    SearchResults
+    SearchResults,
+    Pagination
   },
   data () {
     return {
@@ -48,12 +57,22 @@ export default {
       const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=${maxResults}&key=${key}`
       this.getData(apiUrl)
     },
+    prevPage() {
+      const { baseUrl, part, type, order, maxResults, q, key, prevPageToken } = this.api;
+      const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=${maxResults}&key=${key}&pageToken=${prevPageToken}`;
+      this.getData(apiUrl);
+    },
+
+    nextPage() {
+      const { baseUrl, part, type, order, maxResults, q, key, nextPageToken } = this.api;
+      const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=${maxResults}&key=${key}&pageToken=${nextPageToken}`;
+      this.getData(apiUrl);
+    },
     getData (apiUrl) {
       axios
         .get(apiUrl)
         .then(res => {
           this.videos = res.data.items
-          console.log(this.videos)
           this.api.prevPageToken = res.data.prevPageToken
           this.api.nextPageToken = res.data.nextPageToken
         })

@@ -9,6 +9,7 @@ import { faUserSecret, faSearch, faCheckCircle, faTable } from '@fortawesome/fre
 import { faListAlt } from '@fortawesome/free-regular-svg-icons'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import moment from 'moment'
 
 // MATERIAL DESIGN KOMPONENTE I STILOVI
 import { MdButton, MdContent, MdCard, MdField, MdProgress, MdSnackbar, MdIcon } from 'vue-material/dist/components'
@@ -34,6 +35,11 @@ Vue.use(MdProgress)
 Vue.use(MdSnackbar)
 Vue.use(MdIcon)
 Vue.use(BootstrapVue)
+
+Vue.filter('formatDate', function (value) {
+  if (!value) return ''
+  return moment(value.toString()).format('DD/MM/YYYY hh:mm')
+})
 
 new Vue({
   router,
