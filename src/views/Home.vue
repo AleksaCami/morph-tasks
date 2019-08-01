@@ -18,22 +18,23 @@
     <div class='container'>
       <div class="d-flex mb-3">
         <div class="btn-group ml-auto" role="group">
-          <button
-            @click="changeDisplayMode('grid')"
+          <md-button @click="changeDisplayMode('grid')"
             type="button"
-            class="btn btn-outline-secondary"
             :class="{ active: displayMode === 'grid' }"
-          >
+            class="md-raised list-button"
+            style='background-color: #46d6b5; color: white'
+            >
             <font-awesome-icon class="mr-1" :icon="['fas', 'table']" />
-          </button>
-          <button
+          </md-button>
+          <md-button
             @click="changeDisplayMode('list')"
             type="button"
-            class="btn btn-outline-secondary"
+            class="md-raised"
             :class="{ active: displayMode === 'list' }"
-          >
+            style='background-color: #46d6b5; color: white'
+            >
             <font-awesome-icon class="mr-1" :icon="['far', 'list-alt']" />
-          </button>
+          </md-button>
         </div>
       </div>
 
@@ -157,6 +158,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.list-button {
+  background-color: #46d6b5;
+}
+
 button:focus {
   box-shadow: none !important;
 }

@@ -6,7 +6,12 @@
           <font-awesome-icon :icon="['fab', 'youtube']" />
           <span class="ml-2">YouTube videos</span>
         </a>
-        <router-link style="color: #fff" to="/login" @click.native="logout()" replace>Logout</router-link>
+        <md-button @click.native="logout()"
+          type="button"
+          class="md-raised md-accent"
+          >
+          Logout
+        </md-button>
       </div>
     </nav>
   </header>
@@ -18,6 +23,7 @@ export default {
   methods: {
     logout () {
       localStorage.clear()
+      this.$router.push('/login')
     }
   }
 }

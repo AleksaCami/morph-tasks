@@ -5,22 +5,23 @@
         <h3>Search Results for "{{ reformattedSearchString }}"</h3>
       </div>
       <div class="btn-group ml-auto" role="group">
-        <button
-          @click="changeDisplayMode('grid')"
-          type="button"
-          class="btn btn-outline-secondary"
-          :class="{ active: displayMode === 'grid' }"
-        >
-          <font-awesome-icon class="mr-1" :icon="['fas', 'table']" />
-        </button>
-        <button
-          @click="changeDisplayMode('list')"
-          type="button"
-          class="btn btn-outline-secondary"
-          :class="{ active: displayMode === 'list' }"
-        >
-          <font-awesome-icon class="mr-1" :icon="['far', 'list-alt']" />
-        </button>
+        <md-button @click="changeDisplayMode('grid')"
+            type="button"
+            :class="{ active: displayMode === 'grid' }"
+            class="md-raised list-button"
+            style='background-color: #46d6b5; color: white'
+            >
+            <font-awesome-icon class="mr-1" :icon="['fas', 'table']" />
+          </md-button>
+          <md-button
+            @click="changeDisplayMode('list')"
+            type="button"
+            class="md-raised"
+            :class="{ active: displayMode === 'list' }"
+            style='background-color: #46d6b5; color: white'
+            >
+            <font-awesome-icon class="mr-1" :icon="['far', 'list-alt']" />
+          </md-button>
       </div>
     </div>
 
