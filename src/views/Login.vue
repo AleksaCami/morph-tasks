@@ -44,7 +44,7 @@
           </div>
 
           <div class="actions md-layout md-alignment-center">
-            <md-button v-on:keyup.enter="login" type="submit" class="md-raised md-primary" @click.prevent="login">Log in</md-button>
+            <md-button type="submit" class="md-raised md-primary" @click.prevent="login">Log in</md-button>
           </div>
 
         </md-content>

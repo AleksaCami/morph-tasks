@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class='wrapper video' @click.prevent="openVideo(video)">
-      <youtube :video-id="video.id.videoId"></youtube>
+      <youtube :video-id="video.id.videoId" @ready="ready"></youtube>
       <div class="card-body video">
         <h5 class="card-title">{{ video.snippet.title }}</h5>
         <h6
@@ -18,6 +18,9 @@ export default {
   methods: {
     openVideo (video) {
       this.$router.push(`/video/${video.id.videoId}/${video.snippet.title}/${video.snippet.channelTitle}/${video.snippet.publishedAt}`)
+    },
+    ready (event) {
+      this.player = event.target
     }
   },
   props: ['video']

@@ -33,7 +33,6 @@ export default {
       if (trimmedSearchString !== '') {
         const searchParams = trimmedSearchString.split(/\s+/)
         this.$emit('search', searchParams)
-        this.searchString = ''
       }
     }
   }
