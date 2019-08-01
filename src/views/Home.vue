@@ -41,7 +41,7 @@ export default {
         order: 'viewCount',
         maxResults: 12,
         q: '',
-        key: 'AIzaSyB0CcjIh1rG7O4ex6GhVN2uqMGHxrHAmMU',
+        key: 'AIzaSyCzutc_C0va6pJHfFuX_kg4Sxi6oj5stN0',
         prevPageToken: '',
         nextPageToken: ''
       },

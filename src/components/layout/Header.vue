@@ -2,7 +2,7 @@
   <header>
     <nav class="navbar navbar-expand-sm navbar-dark nav-color mb-5">
       <div class="container">
-        <a style="color: #fff" class="navbar-brand" href="#">
+        <a style="color: #fff" class="navbar-brand" href="/home">
           <font-awesome-icon :icon="['fab', 'youtube']" />
           <span class="ml-2">YouTube videos</span>
         </a>

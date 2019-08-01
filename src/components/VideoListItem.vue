@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card-body">
+    <div @click.prevent="openVideo(video)" class="card-body video">
       <h5 class="card-title">
       <youtube :video-id="video.id.videoId"></youtube>
       </h5>
@@ -15,6 +15,20 @@
 <script>
 export default {
   name: 'VideoListItem',
+  methods: {
+    openVideo (video) {
+      console.log(video)
+      this.$router.push(`/video/${video.id.videoId}`)
+    }
+  },
   props: ['video']
 }
 </script>
+
+<style lang="scss" scoped>
+
+.video {
+  cursor: pointer
+}
+
+</style>

@@ -5,15 +5,6 @@
         <md-card-header class="content">
           <md-card-header-text>
             <div class="heading-wrapper">
-              <div v-if="isLoggingIn" class="spinner-wrapper mt-2">
-                <div style="text-align: center">
-                  <md-progress-spinner style="width: 3rem; height: 0.5rem;" :md-diameter="30" :md-stroke="3" class='md-accent' md-mode="determinate" :md-value="amount">
-                  </md-progress-spinner>
-                </div>
-                 <div>
-                  {{ amount }}%
-                </div>
-              </div>
               <div class='heading-text-wrapper'>
                 <div class="md-subhead heading">Welcome!</div>
                 <div class="md-title heading">
@@ -74,7 +65,6 @@
 export default {
   data () {
     return {
-      loggedIn: false,
       errors: [],
       input: {
         username: '',
