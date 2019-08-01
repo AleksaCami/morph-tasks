@@ -5,7 +5,7 @@ import store from './store'
 
 // FONT AWESOME STILOVI I IKONICE
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -21,6 +21,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 library.add(faUserSecret)
 library.add(faYoutube)
+library.add(faSearch)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
