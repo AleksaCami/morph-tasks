@@ -121,7 +121,6 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  md-content
   .heading-wrapper {
     display: flex;
     align-items: center;

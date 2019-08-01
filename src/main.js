@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import moment from 'moment'
 
 // MATERIAL DESIGN KOMPONENTE I STILOVI
-import { MdButton, MdContent, MdCard, MdField, MdProgress, MdSnackbar, MdIcon } from 'vue-material/dist/components'
+import { MdButton, MdContent, MdCard, MdField, MdProgress, MdSnackbar, MdIcon, MdDivider } from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
@@ -39,6 +39,7 @@ Vue.use(MdField)
 Vue.use(MdProgress)
 Vue.use(MdSnackbar)
 Vue.use(MdIcon)
+Vue.use(MdDivider)
 Vue.use(BootstrapVue)
 Vue.use(VueYouTubeEmbed)
 
