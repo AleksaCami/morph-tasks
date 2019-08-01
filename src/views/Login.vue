@@ -83,21 +83,21 @@ export default {
           this.$router.replace({ name: 'home' })
         } else {
           this.errors = []
-          if(this.input.username !== this.$parent.mockAccount.username || this.input.password !== this.$parent.mockAccount.password) {
+          if (this.input.username !== this.$parent.mockAccount.username || this.input.password !== this.$parent.mockAccount.password) {
             this.showSnackBar = true
             this.errors.push('Username ili password su netacni')
           }
         }
       } else {
         this.errors = []
-          if (!this.username) {
-            this.showSnackBar = true
-            this.errors.push('Username required.')
-          }
-          if (!this.password) {
-            this.showSnackBar = true
-            this.errors.push('Password required.')
-          }
+        if (!this.username) {
+          this.showSnackBar = true
+          this.errors.push('Username required.')
+        }
+        if (!this.password) {
+          this.showSnackBar = true
+          this.errors.push('Password required.')
+        }
       }
     }
   }
@@ -118,7 +118,7 @@ export default {
   .heading-wrapper {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
   }
   .heading-text-wrapper {
     display: flex;
