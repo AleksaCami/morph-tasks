@@ -27,12 +27,22 @@
           <div class="form">
             <md-field>
               <label>E-mail</label>
-              <md-input v-model="input.username" autofocus></md-input>
+              <md-input
+                v-model="input.username"
+                @keydown.13.prevent="login"
+                autofocus
+              >
+              </md-input>
             </md-field>
 
             <md-field md-has-password>
               <label>Password</label>
-              <md-input v-model="input.password" type="password"></md-input>
+              <md-input
+                v-model="input.password"
+                type="password"
+                @keydown.13.prevent="login"
+              >
+              </md-input>
             </md-field>
           </div>
 
