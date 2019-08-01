@@ -17,8 +17,7 @@ export default {
   name: 'VideoListItem',
   methods: {
     openVideo (video) {
-      console.log(video)
-      this.$router.push(`/video/${video.id.videoId}`)
+      this.$router.push(`/video/${video.id.videoId}/${video.snippet.title}/${video.snippet.channelTitle}/${video.snippet.publishedAt}`)
     }
   },
   props: ['video']

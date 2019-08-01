@@ -17,7 +17,7 @@ export default {
   name: 'VideoGridItem',
   methods: {
     openVideo (video) {
-      this.$router.push(`/video/${video.id.videoId}`)
+      this.$router.push(`/video/${video.id.videoId}/${video.snippet.title}/${video.snippet.channelTitle}/${video.snippet.publishedAt}`)
     }
   },
   props: ['video']
