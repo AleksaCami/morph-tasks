@@ -5,12 +5,12 @@ import store from './store'
 
 // FONT AWESOME STILOVI I IKONICE
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faSearch, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // MATERIAL DESIGN KOMPONENTE I STILOVI
-import { MdButton, MdContent, MdCard, MdField, MdProgress, MdSnackbar } from 'vue-material/dist/components'
+import { MdButton, MdContent, MdCard, MdField, MdProgress, MdSnackbar, MdIcon } from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
@@ -19,9 +19,7 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-library.add(faUserSecret)
-library.add(faYoutube)
-library.add(faSearch)
+library.add(faUserSecret, faYoutube, faSearch, faCheckCircle)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -33,6 +31,7 @@ Vue.use(MdCard)
 Vue.use(MdField)
 Vue.use(MdProgress)
 Vue.use(MdSnackbar)
+Vue.use(MdIcon)
 Vue.use(BootstrapVue)
 
 new Vue({

@@ -26,6 +26,9 @@
         <md-content class="md-elevation-3">
           <div class="form">
             <md-field>
+              <md-icon>
+                <font-awesome-icon v-if="this.input.username" icon="check-circle" size="xs" />
+              </md-icon>
               <label>E-mail</label>
               <md-input
                 v-model="input.username"
@@ -36,6 +39,9 @@
             </md-field>
 
             <md-field md-has-password>
+              <md-icon>
+                <font-awesome-icon v-if="this.input.password" icon="check-circle" size="xs" />
+              </md-icon>
               <label>Password</label>
               <md-input
                 v-model="input.password"
@@ -125,6 +131,7 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  md-content
   .heading-wrapper {
     display: flex;
     align-items: center;
