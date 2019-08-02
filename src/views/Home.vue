@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <!-- HEADER KOMPONENTA -->
-    <Header/>
 
     <!-- SEARCH FORMA -->
     <SearchForm v-on:search="search"/>

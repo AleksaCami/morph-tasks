@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
       <div class='container'>
         <div class='video-wrapper py-5'>
           <div class='video'>
