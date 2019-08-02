@@ -2,6 +2,9 @@
   <div>
     <div class="container">
       <h1>Favorite videos</h1>
+      <div v-if="this.videoValues.length === 0">
+        <h3>You don't have any videos favorited!</h3>
+      </div>
       <div class="card-columns">
         <div class="card" :key="video.id.videoId" v-for="video in videoValues">
           <VideoGridItem :video="video"/>
