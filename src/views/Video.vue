@@ -3,6 +3,7 @@
       <div class='container full'>
         <div class='video-wrapper py-5'>
           <div class='video'>
+            <!-- Iz nekog razloga player-height ne radi, a ovako pise u dokumentaciji da treba -->
             <youtube :video-id="id" player-width="1280" player-height="750" :player-vars="{ autoplay: 1 }" ></youtube>
             <h2 v-html="title">{{ title }}</h2>
 
@@ -21,6 +22,7 @@ export default {
   name: 'Video',
   data () {
     return {
+      // Postavljanje state-a na vrednosti dobijene iz url parametarara
       id: this.$route.params.id,
       title: this.$route.params.title,
       channel: this.$route.params.channel,

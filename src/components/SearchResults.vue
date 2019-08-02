@@ -5,6 +5,7 @@
         <h3>Search Results for "{{ reformattedSearchString }}"</h3>
       </div>
       <div class="btn-group ml-auto" role="group">
+        <!-- Dugmici za promenu viewa, iz grida u listu i obrnuto -->
         <md-button @click="changeDisplayMode('grid')"
             type="button"
             :class="{ active: displayMode === 'grid' }"
@@ -25,6 +26,7 @@
       </div>
     </div>
 
+    <!-- Dva odvojena prikaza u dve odvojene komponente za prikaz videa u gridu i listi -->
     <div class="card-columns" v-if="displayMode === 'grid'">
       <div class="card" :key="video.id.videoId" v-for="video in videos">
         <VideoGridItem :video="video"/>

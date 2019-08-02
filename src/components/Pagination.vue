@@ -7,7 +7,7 @@
             type="button"
             class="md-raised md-accent"
             >
-            Previous
+            <font-awesome-icon class="mr-1" :icon="['fas', 'arrow-left']" /> Previous
           </md-button>
         </li>
         <li class="page-item" :class="{ disabled: nextPageToken === undefined }">
@@ -15,7 +15,7 @@
             type="button"
             class="md-raised md-accent"
             >
-            Next
+            Next <font-awesome-icon class="mr-1" :icon="['fas', 'arrow-right']" />
           </md-button>
         </li>
       </ul>
@@ -29,6 +29,7 @@ export default {
   props: ['prevPageToken', 'nextPageToken'],
   methods: {
     prevPage () {
+      // Emitovanje prev-page i next-page eventa parent komponenti
       this.$emit('prev-page')
     },
     nextPage () {

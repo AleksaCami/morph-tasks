@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <!-- Jako slicna logika kao sa grid prikazom -->
     <md-card class="video">
       <md-card-media>
         <youtube :video-id="video.id.videoId"></youtube>

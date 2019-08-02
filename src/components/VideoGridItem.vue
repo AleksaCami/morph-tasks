@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class='wrapper video'>
+      <!-- Renderovanje videa u gridu koriscenjem prosledjenog videos propsa -->
       <md-card>
         <md-card-header>
           <div v-html='video.snippet.title' class="md-title">{{ video.snippet.title }}</div>
@@ -8,6 +9,7 @@
         </md-card-header>
 
         <md-card-media>
+          <!-- Render youtube videa -->
           <youtube :video-id="video.id.videoId" @ready="ready"></youtube>
         </md-card-media>
 
@@ -26,6 +28,7 @@
       </md-card>
     </div>
 
+    <!-- Modalni prozor za prikazom izabranog videa -->
     <div class='dialog'>
       <md-dialog :md-active.sync="showDialog" :md-backdrop='false'>
         <md-content>
@@ -62,18 +65,21 @@ export default {
   },
   methods: {
     openVideo (video) {
+      // otvaranje videa na ruti /video sa prosledjenim parametrima
       this.$router.push(`/video/${video.id.videoId}/${video.snippet.title}/${video.snippet.channelTitle}/${video.snippet.publishedAt}`)
     },
     openVideoInModal (id) {
+      // otvaranje videa u modalnom prozoru
       this.showDialog = true
-      console.log(id)
     },
     ready (event) {
       this.player = event.target
     },
     addToFavorites (video) {
+      // Dodavanje videa u favorite, klikom na dugme ispod videa, mnogo bolje resenje od multi selecta za ovu vrstu aplikacije
       const favVideo = video
       this.showSnackBar = true
+      // Dodavanje videa u localStorage gde je id videa key a value ceo objekat
       localStorage.setItem(`${video.id.videoId}`, JSON.stringify(favVideo))
     }
   },

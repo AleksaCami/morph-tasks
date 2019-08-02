@@ -42,6 +42,7 @@ export default {
     return {}
   },
   methods: {
+    // Log out - brise se login token iz local storage, prelazi na rutu /login
     logout () {
       localStorage.removeItem('loggedIn')
       this.$router.push('/login')

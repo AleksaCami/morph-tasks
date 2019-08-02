@@ -52,6 +52,7 @@
         </md-content>
       </md-card>
 
+      <!-- Snackbar u kojem se ispisuju greske u zavisnosti od toga koji je tip greske -->
       <md-snackbar :md-position="position" :md-duration="isInfinity ? Infinity : duration" :md-active.sync="showSnackBar" md-persistent>
         <div v-if='errors.length'>
           <p v-for="error in errors" :key="error"> {{ error }}</p>
@@ -73,7 +74,6 @@ export default {
         username: '',
         password: ''
       },
-      amount: 0,
       showSnackBar: false,
       position: 'center',
       duration: 4000,
@@ -82,22 +82,33 @@ export default {
   },
   methods: {
     login () {
+      // Metoda za login
+      // Prva provera, da li su input polja prazna
       if (this.input.username !== '' && this.input.password !== '') {
+        // Jednostavna provera da li su unesene vrednosti u poljima jednake mock accountu kreiranom na App.vue
         if (this.input.username === this.$parent.mockAccount.username && this.input.password === this.$parent.mockAccount.password) {
+          // Ukoliko jesu, emitovanje eventa authenticated = true
+          // Pomocu kojeg dobijamo pristup ostalim rutama
           this.$emit('authenticated', true)
+          // Postavljanje session tokena na username
+          // Za ovakav jednostavan primer smatrao sam da je ovako dovoljno cuvati sesiju
           this.loggedIn = this.input.username
           localStorage.setItem('loggedIn', this.loggedIn)
+          // Rutiranje na home komponentu nakon uspesnog logina
           this.$router.replace({ name: 'home' })
         } else {
+          // Svaki put kada se desi greska, errors array se postavlja na defaultnu vrednost
           this.errors = []
           if (this.input.username !== this.$parent.mockAccount.username || this.input.password !== this.$parent.mockAccount.password) {
+            // Ukoliko username ili password nisu dobri
             this.showSnackBar = true
-            this.errors.push('Username ili password su netacni')
+            this.errors.push('Username / password incorrect.')
           }
         }
       } else {
         this.errors = []
         if (!this.username) {
+          // Ukoliko nisu uneseni username ili password
           this.showSnackBar = true
           this.errors.push('Username required.')
         }

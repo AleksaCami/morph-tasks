@@ -33,6 +33,7 @@
 </template>
 
 <script>
+// Biblioteka za generisanje random reci
 import randomWords from 'random-words'
 import axios from 'axios'
 import SearchForm from '@/components/SearchForm.vue'
@@ -50,6 +51,7 @@ export default {
   },
   data () {
     return {
+      // API objekat koji odgovara JSON odgovoru youtube API-a
       api: {
         baseUrl: 'https://www.googleapis.com/youtube/v3/search?',
         part: 'snippet',
@@ -71,13 +73,18 @@ export default {
   },
   methods: {
     search (searchParams) {
+      // Search metoda koja prima search parametre unesene u input polje
+      // Trimuje whitespace i sastavlja query od prosledjenih reci
       this.reformattedSearchString = searchParams.join(' ')
       this.api.q = searchParams.join('+')
+      // Destrukturisanje this.api objekta u posebne promenljive
       const { baseUrl, part, type, order, maxResults, q, key } = this.api
+      // Sastavljen API URL od svih dostupnih parameteara
       const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=${maxResults}&key=${key}`
       this.getData(apiUrl)
     },
     prevPage () {
+      // Logika za previous page i next page je identicna, jedina razlika jeste token u URL-u
       const { baseUrl, part, type, order, maxResults, q, key, prevPageToken } = this.api
       const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${q}&maxResults=${maxResults}&key=${key}&pageToken=${prevPageToken}`
       this.getData(apiUrl)
@@ -89,11 +96,16 @@ export default {
       this.getData(apiUrl)
     },
     getData (apiUrl) {
+      // Postavljanje homeVideos niza na default vrednost jer se ova metoda poziva ukoliko se
+      // Iskoristi search ili se predje na drugu stranicu
       this.homeVideos = []
+      // Get request ka API
       axios
         .get(apiUrl)
         .then(res => {
+          // postavljanje this.videos state-a jednako rezultatu get requesta od API-a
           this.videos = res.data.items
+          // postavljanje prevpage i nextpage tokena u state-u jednako tokenima iz API-a
           this.api.prevPageToken = res.data.prevPageToken
           this.api.nextPageToken = res.data.nextPageToken
         })
@@ -101,6 +113,8 @@ export default {
     },
 
     getDefaultVideos () {
+      // Metoda koja se poziva cim se komponenta ucita, getuje default klipove
+      // Kao query koristi jednu random rec
       const { baseUrl, part, type, order, maxResults, key } = this.api
       const queryWord = randomWords(1)
       const apiUrl = `${baseUrl}part=${part}&type=${type}&order=${order}&q=${queryWord}&maxResults=${maxResults}&key=${key}`
