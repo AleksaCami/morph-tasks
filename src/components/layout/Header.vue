@@ -17,12 +17,12 @@
       <md-list>
         <md-list-item>
           <a href="/home">
-            <md-button to="/home" class="md-primary">Home</md-button>
+            <md-button to="/home" class="md-primary md-raised">Home</md-button>
           </a>
         </md-list-item>
         <md-list-item>
           <a href="/favorites">
-            <md-button to="/favorites" class="md-primary">Favorites</md-button>
+            <md-button to="/favorites" class="md-primary md-raised">Favorites</md-button>
           </a>
         </md-list-item>
 

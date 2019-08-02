@@ -42,7 +42,6 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 
 html {
-  height: 100vh;
   width: 100%;
 }
 
@@ -67,7 +66,7 @@ html {
 .page-container {
     overflow: hidden;
     position: relative;
-    height: 100vh;
+    min-height: 100%;
 }
 
 </style>

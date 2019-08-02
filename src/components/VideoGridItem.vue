@@ -21,7 +21,7 @@
           <md-button @click.prevent="openVideo(video)" class="md-raised md-primary">
             Open
           </md-button>
-          <md-button @click.prevent="addToFavorites(video)" class="md-raised md-primary">
+          <md-button v-if='this.$route.path !== "/favorites"' @click.prevent="addToFavorites(video)" class="md-raised md-primary">
             Add to favorites
           </md-button>
         </md-card-actions>

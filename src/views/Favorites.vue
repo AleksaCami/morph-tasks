@@ -1,10 +1,11 @@
 <template>
   <div>
     <div class="container">
+      <h1>Favorite videos</h1>
       <div class="card-columns">
-        <!-- <div class="card" :key="video.id.videoId" v-for="video in favVideos">
+        <div class="card" :key="video.id.videoId" v-for="video in videoValues">
           <VideoGridItem :video="video"/>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
@@ -20,13 +21,21 @@ export default {
   },
   data () {
     return {
-      favVideos: []
+      favVideos: [],
+      videoKeys: [],
+      videoValues: []
     }
   },
   methods: {
     getVideos () {
-      const favVideos = localStorage
-      console.log(favVideos)
+      this.favVideos = localStorage
+      this.videoKeys = Object.keys(this.favVideos)
+
+      this.videoKeys.forEach((element) => {
+        if (element.length === 11) {
+          this.videoValues.push(JSON.parse(localStorage.getItem(element)))
+        }
+      })
     }
   },
   mounted: function () {
