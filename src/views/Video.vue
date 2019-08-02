@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div class='container'>
+      <div class='container full'>
         <div class='video-wrapper py-5'>
           <div class='video'>
             <youtube :video-id="id" player-width="1280" player-height="750" :player-vars="{ autoplay: 1 }" ></youtube>
@@ -38,6 +38,11 @@ h2 {
 
 h4 {
   margin-top: 40px;
+}
+
+.full {
+  position: relative;
+  min-height: 100%;
 }
 
 .video-wrapper {

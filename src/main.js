@@ -18,7 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import moment from 'moment'
 
 // MATERIAL DESIGN KOMPONENTE I STILOVI
-import { MdButton, MdContent, MdCard, MdField, MdProgress, MdSnackbar, MdIcon, MdDivider, MdDrawer, MdToolbar, MdList, MdTooltip } from 'vue-material/dist/components'
+import { MdButton, MdContent, MdCard, MdField, MdProgress, MdSnackbar, MdIcon, MdDivider, MdMenu, MdToolbar, MdList, MdTooltip, MdDialog } from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
@@ -55,16 +55,17 @@ Vue.use(MdProgress)
 Vue.use(MdSnackbar)
 Vue.use(MdIcon)
 Vue.use(MdDivider)
-Vue.use(MdDrawer)
+Vue.use(MdMenu)
 Vue.use(MdToolbar)
 Vue.use(MdTooltip)
 Vue.use(MdList)
 Vue.use(BootstrapVue)
 Vue.use(VueYouTubeEmbed)
+Vue.use(MdDialog)
 
-Vue.filter('formatDate', function (value) {
+Vue.filter('formatDate', (value) => {
   if (!value) return ''
-  return moment(value.toString()).format('DD/MM/YYYY hh:mm')
+  return moment(value.toString()).format('DD/MM/YYYY')
 })
 
 new Vue({

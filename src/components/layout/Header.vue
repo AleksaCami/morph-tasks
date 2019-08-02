@@ -1,43 +1,37 @@
 <template>
   <header>
-    <nav class="navbar navbar-expand-sm navbar-dark nav-color mb-5">
+    <nav class="navbar navbar-expand-sm navbar-dark fixed nav-color mb-5">
       <div class="container">
         <a style="color: #fff" class="navbar-brand" href="/home">
           <font-awesome-icon :icon="['fab', 'youtube']" />
           <span class="ml-2">YouTube videos</span>
         </a>
-        <md-button class="md-dense md-primary" style='color: white; border: 1px solid white' @click="showSidepanel = true">Menu</md-button>
+        <md-menu md-size="medium" md-align-trigger>
+          <md-button class='md-primary' style='color: white; border: 1px solid white' md-menu-trigger>Menu</md-button>
+
+          <md-menu-content>
+            <md-menu-item>
+              <a href="/home">
+                <md-button to="/home" class="md-primary md-raised">Home</md-button>
+              </a>
+            </md-menu-item>
+            <md-menu-item>
+              <a href="/favorites">
+                <md-button to="/favorites" class="md-primary md-raised">Favorites</md-button>
+              </a>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button @click.native="logout()"
+                type="button"
+                class="md-raised md-accent"
+                >
+                Logout
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
       </div>
     </nav>
-    <md-drawer class="md-right" :md-active.sync="showSidepanel">
-      <md-toolbar class="md-transparent" md-elevation="0">
-        <span class="md-title">Menu</span>
-      </md-toolbar>
-
-      <md-list>
-        <md-list-item>
-          <a href="/home">
-            <md-button to="/home" class="md-primary md-raised">Home</md-button>
-          </a>
-        </md-list-item>
-        <md-list-item>
-          <a href="/favorites">
-            <md-button to="/favorites" class="md-primary md-raised">Favorites</md-button>
-          </a>
-        </md-list-item>
-
-        <hr>
-
-        <md-list-item>
-          <md-button @click.native="logout()"
-            type="button"
-            class="md-raised md-accent"
-            >
-            Logout
-          </md-button>
-        </md-list-item>
-      </md-list>
-    </md-drawer>
   </header>
 </template>
 
@@ -45,9 +39,7 @@
 export default {
   name: 'Header',
   data () {
-    return {
-      showSidepanel: false
-    }
+    return {}
   },
   methods: {
     logout () {
@@ -63,9 +55,16 @@ export default {
 $white: #fff;
 $accent: #2196f3;
 
-.md-drawer {
-  width: 230px;
-  max-width: calc(100vw - 125px);
+header {
+  margin-bottom: 100px;
+}
+
+.fixed {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .nav-text {

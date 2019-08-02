@@ -64,9 +64,9 @@ html {
 }
 
 .page-container {
-    overflow: hidden;
-    position: relative;
-    min-height: 100%;
+  overflow: hidden;
+  position: relative;
+  min-height: 100%;
 }
 
 </style>
