@@ -3,7 +3,6 @@
     <nav>
       <ul class="pagination justify-content-end">
         <li class="page-item" :class="{ disabled: prevPageToken === undefined }">
-          <!-- <a @click="prevPage" class="page-link" href="#">Previous</a> -->
           <md-button @click.native="prevPage"
             type="button"
             class="md-raised md-accent"

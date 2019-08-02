@@ -53,6 +53,7 @@ export default {
     logout () {
       localStorage.removeItem('loggedIn')
       this.$router.push('/login')
+      console.clear()
     }
   }
 }

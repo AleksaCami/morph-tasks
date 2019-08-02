@@ -2,6 +2,7 @@
   <div>
     <div class="centered-container">
       <md-card>
+
         <md-card-header class="content">
           <md-card-header-text>
             <div class="heading-wrapper">
@@ -14,6 +15,7 @@
             </div>
           </md-card-header-text>
         </md-card-header>
+
         <md-content class="md-elevation-3">
           <div class="form">
             <md-field>
@@ -56,6 +58,7 @@
         </div>
         <md-button class="md-primary" @click="showSnackbar = false">Retry</md-button>
       </md-snackbar>
+
     </div>
   </div>
 </template>
@@ -70,7 +73,6 @@ export default {
         username: '',
         password: ''
       },
-      isLoggingIn: false,
       amount: 0,
       showSnackBar: false,
       position: 'center',
@@ -82,7 +84,6 @@ export default {
     login () {
       if (this.input.username !== '' && this.input.password !== '') {
         if (this.input.username === this.$parent.mockAccount.username && this.input.password === this.$parent.mockAccount.password) {
-          this.isLoggingIn = true
           this.$emit('authenticated', true)
           this.loggedIn = this.input.username
           localStorage.setItem('loggedIn', this.loggedIn)

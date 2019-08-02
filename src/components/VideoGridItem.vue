@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class='wrapper video'>
-      <!-- <youtube :video-id="video.id.videoId" @ready="ready"></youtube> -->
       <md-card>
         <md-card-header>
 
