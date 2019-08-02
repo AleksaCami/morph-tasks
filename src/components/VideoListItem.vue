@@ -20,18 +20,31 @@
           </md-button>
         </md-card-actions>
       </md-card>
+      <md-snackbar :md-position="position" :md-duration="isInfinity ? Infinity : duration" :md-active.sync="showSnackBar" md-persistent>
+        <p v-html='video.snippet.title'>{{video.snippet.title}}</p>
+        <md-button class="md-primary" @click="showSnackbar = false">Close</md-button>
+      </md-snackbar>
   </div>
 </template>
 
 <script>
 export default {
   name: 'VideoListItem',
+  data () {
+    return {
+      showSnackBar: false,
+      position: 'center',
+      duration: 4000,
+      isInfinity: false
+    }
+  },
   methods: {
     openVideo (video) {
       this.$router.push(`/video/${video.id.videoId}/${video.snippet.title}/${video.snippet.channelTitle}/${video.snippet.publishedAt}`)
     },
     addToFavorites (video) {
       const favVideo = video
+      this.showSnackBar = true
       localStorage.setItem(`${video.id.videoId}`, JSON.stringify(favVideo))
     }
   },

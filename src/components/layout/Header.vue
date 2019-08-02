@@ -9,7 +9,7 @@
         <md-button class="md-dense md-primary" style='color: white; border: 1px solid white' @click="showSidepanel = true">Menu</md-button>
       </div>
     </nav>
-    <md-drawer class="md-right" style='height: 100vh' :md-active.sync="showSidepanel">
+    <md-drawer class="md-right" :md-active.sync="showSidepanel">
       <md-toolbar class="md-transparent" md-elevation="0">
         <span class="md-title">Menu</span>
       </md-toolbar>
@@ -22,7 +22,7 @@
         </md-list-item>
         <md-list-item>
           <a href="/favorites">
-            <md-button class="md-primary">Favorites</md-button>
+            <md-button to="/favorites" class="md-primary">Favorites</md-button>
           </a>
         </md-list-item>
 

@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import Header from '@/components/layout/Header.vue'
 
 export default {
   name: 'Video',
@@ -27,9 +26,6 @@ export default {
       channel: this.$route.params.channel,
       publishedAt: this.$route.params.publishedAt
     }
-  },
-  components: {
-    Header
   }
 }
 </script>

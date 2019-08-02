@@ -35,7 +35,6 @@
 <script>
 import randomWords from 'random-words'
 import axios from 'axios'
-import Header from '@/components/layout/Header.vue'
 import SearchForm from '@/components/SearchForm.vue'
 import SearchResults from '@/components/SearchResults.vue'
 import Pagination from '@/components/Pagination.vue'
@@ -44,7 +43,6 @@ import VideoGridItem from '@/components/VideoGridItem.vue'
 export default {
   name: 'home',
   components: {
-    Header,
     SearchForm,
     SearchResults,
     Pagination,
@@ -67,7 +65,8 @@ export default {
       videos: [],
       homeVideos: [],
       searchQueried: false,
-      displayMode: 'grid'
+      displayMode: 'grid',
+      showSnackbar: false
     }
   },
   methods: {

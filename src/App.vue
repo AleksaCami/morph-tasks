@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class='page-container'>
     <Header v-if='this.$route.path !== "/login"' />
     <router-view @authenticated="setAuthenticated" />
   </div>
@@ -43,6 +43,7 @@ export default {
 
 html {
   height: 100vh;
+  width: 100%;
 }
 
 #app {
@@ -62,4 +63,11 @@ html {
     }
   }
 }
+
+.page-container {
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+}
+
 </style>

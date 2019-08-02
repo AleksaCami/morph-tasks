@@ -27,12 +27,24 @@
         </md-card-actions>
       </md-card>
     </div>
+    <md-snackbar :md-position="position" :md-duration="isInfinity ? Infinity : duration" :md-active.sync="showSnackBar" md-persistent>
+      <p>{{video.snippet.title}} added to favorites</p>
+      <md-button class="md-primary" @click="showSnackbar = false">Close</md-button>
+    </md-snackbar>
   </div>
 </template>
 
 <script>
 export default {
   name: 'VideoGridItem',
+  data () {
+    return {
+      showSnackBar: false,
+      position: 'center',
+      duration: 4000,
+      isInfinity: false
+    }
+  },
   methods: {
     openVideo (video) {
       this.$router.push(`/video/${video.id.videoId}/${video.snippet.title}/${video.snippet.channelTitle}/${video.snippet.publishedAt}`)
@@ -42,6 +54,7 @@ export default {
     },
     addToFavorites (video) {
       const favVideo = video
+      this.showSnackBar = true
       localStorage.setItem(`${video.id.videoId}`, JSON.stringify(favVideo))
     }
   },
